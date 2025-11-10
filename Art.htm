@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PAGE TITLE HERE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #000;
+            --panel: rgba(17,17,17,0.98);
+            --text-red: #8B0000;
+            --muted: #bdbdbd;
+            --sidebar-width: 280px;
+            --ease: 0.32s;
+        }
+
+        /* Reset + Base Layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            background: var(--bg);
+            font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* Menu Button */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+
+        /* Sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            z-index: 1050;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100%;
+            background: var(--panel);
+            transform: translateX(-110%);
+            transition: transform var(--ease);
+            box-shadow: 4px 0 30px rgba(0,0,0,0.6);
+            color: var(--muted);
+            padding-top: 64px;
+            overflow-y: auto;
+            z-index: 1101;
+        }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            padding: 8px 12px;
+            gap: 4px;
+        }
+
+        .sidebar a, .dropdown-btn {
+            display: block;
+            padding: 14px 16px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            color: var(--muted);
+        }
+
+            .sidebar a.active,
+            .sidebar a:hover,
+            .dropdown-btn:hover {
+                background: #222;
+                color: #fff;
+            }
+
+        /* Dropdown */
+        .dropdown-container {
+            display: none;
+            padding-left: 14px;
+            flex-direction: column;
+        }
+
+            .dropdown-container.open {
+                display: block;
+            }
+
+        .dropdown-btn.active {
+            background: #333;
+            color: #fff;
+        }
+
+        /* Hero Layout */
+        .hero {
+            min-height: 100vh;
+            padding-left: 140px;
+            display: flex;
+            align-items: center;
+            color: var(--text-red);
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(60px, 6vw, 100px);
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="menu-btn" id="menuToggle">☰ Menu</button>
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="siteSidebar">
+        <nav>
+            <a href="Main.htm">Main</a>
+            <a href="Unit1.htm">Brick Breaker</a>
+            <a href="Unit2.htm">Historical Topics</a>
+
+            <button class="dropdown-btn">Current Issues ▼</button>
+            <div class="dropdown-container">
+                <a href="CyberFOI.htm">Cybersecurity / FOI</a>
+                <a href="ComputerEngineer.htm">Computer Engineer</a>
+            </div>
+
+            <a href="Unit5.htm">???</a>
+            <a href="Art.htm" class="active">Art Projects</a>
+        </nav>
+    </aside>
+
+    <main class="hero">
+        <div>
+            <h1 class="hero-title">IN MAINTENANCE</h1>
+            <p>IN MAINTENANCE</p>
+        </div>
+    </main>
+
+    <script>
+        const menuBtn = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("siteSidebar");
+        const overlay = document.getElementById("overlay");
+
+        // Toggle Sidebar
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            overlay.classList.toggle("active");
+        });
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+            overlay.classList.remove("active");
+        });
+
+        // Dropdown Behavior
+        const dropdownBtn = document.querySelector(".dropdown-btn");
+        const dropdown = document.querySelector(".dropdown-container");
+
+        dropdownBtn.addEventListener("click", () => {
+            dropdown.classList.toggle("open");
+            dropdownBtn.classList.toggle("active");
+        });
+    </script>
+
+</body>
+</html>

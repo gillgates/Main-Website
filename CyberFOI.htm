@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity / FOI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ======================
+           VARIABLES
+        ====================== */
+        :root {
+            --bg: #000;
+            --panel: rgba(17,17,17,0.98);
+            --text-red: #8B0000;
+            --muted: #bdbdbd;
+            --sidebar-width: 280px;
+            --ease: 0.32s;
+        }
+
+        /* ======================
+           RESET + BASE
+        ====================== */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            background: var(--bg);
+            font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+            color: var(--muted);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ======================
+           MENU BUTTON
+        ====================== */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+
+        /* ======================
+           SIDEBAR + OVERLAY
+        ====================== */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            z-index: 1050;
+        }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100%;
+            background: var(--panel);
+            color: var(--muted);
+            padding-top: 64px;
+            overflow-y: auto;
+            transform: translateX(-110%);
+            transition: transform var(--ease);
+            z-index: 1101;
+        }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar nav {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 8px 12px;
+            }
+
+            .sidebar a, .dropdown-btn {
+                display: block;
+                padding: 14px 16px;
+                border-radius: 6px;
+                font-size: 18px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                text-align: left;
+                color: var(--muted);
+            }
+
+                .sidebar a.active,
+                .sidebar a:hover,
+                .dropdown-btn:hover {
+                    background: #222;
+                    color: #fff;
+                }
+
+        /* ======================
+           DROPDOWN MENU
+        ====================== */
+        .dropdown-container {
+            display: none;
+            flex-direction: column;
+            padding-left: 14px;
+        }
+
+            .dropdown-container.open {
+                display: block;
+            }
+
+        .dropdown-btn.active {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* ======================
+           HERO SECTION
+        ====================== */
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(36px, 6vw, 80px);
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--text-red);
+            margin-top: 120px;
+        }
+
+        /* ======================
+           MAIN CONTENT
+        ====================== */
+        .main {
+            padding: 24px 64px;
+            max-width: 900px;
+            margin: 0 auto 64px;
+        }
+
+            .main p {
+                font-size: 18px;
+                line-height: 1.6;
+                margin-bottom: 16px;
+            }
+
+        .image-right {
+            float: right;
+            width: 40%;
+            max-width: 300px;
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+
+            .image-right img {
+                width: 100%;
+                border-radius: 8px;
+            }
+
+        h3.hero-title {
+            margin-top: 64px;
+            font-size: clamp(28px, 5vw, 60px);
+            color: var(--text-red);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Button -->
+    <button class="menu-btn" id="menuToggle">☰ Menu</button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="siteSidebar">
+        <nav>
+            <a href="Main.htm">Main</a>
+            <a href="Unit1.htm">Brick Breaker</a>
+            <a href="Unit2.htm">Historical Topics</a>
+
+            <!-- Dropdown -->
+            <button class="dropdown-btn active">Current Issues ▼</button>
+            <div class="dropdown-container open">
+                <a href="CyberFOI.htm" class="active">Cybersecurity / FOI</a>
+                <a href="CompEng.htm">Computer Engineer</a>
+            </div>
+
+            <a href="Unit5.htm">???</a>
+            <a href="Art.htm">Art Projects</a>
+        </nav>
+    </aside>
+
+    <!-- Page Title -->
+    <h1 class="hero-title">Cybersecurity & Freedom of Information</h1>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="image-right">
+            <img src="https://img.freepik.com/free-vector/protect-against-cyber-attacks-infographic_23-2148544470.jpg?semt=ais_hybrid&w=740&q=80" alt="Cybersecurity Concept">
+        </div>
+
+        <p>In a world where nearly every aspect of society depends on digital systems, cybersecurity has become one of the most urgent and complicated challenges of the modern era...</p>
+
+        <p>Over the past decade, cyber-attacks have evolved rapidly...</p>
+
+        <p>Governments and organizations worldwide have therefore made cybersecurity a national priority...</p>
+
+        <p>At the same time, democratic societies depend on transparency to function properly...</p>
+
+        <p>FOI reinforces trust between citizens and their institutions...</p>
+
+        <p>However, as cybersecurity strengthens, the amount of information considered “classified” or “restricted” can grow as well...</p>
+
+        <p>On the other hand, poorly managed FOI systems can unintentionally put people at risk...</p>
+
+        <p>Finding the right balance is one of the greatest challenges modern governments face...</p>
+
+        <p>Technology can help solve tensions between cybersecurity and FOI...</p>
+
+        <p>Real-world situations demonstrate the importance of this balance...</p>
+
+        <p>Another example involves public access to government surveillance programs...</p>
+
+        <p>The European Union’s GDPR and similar privacy laws require governments to protect personal data carefully...</p>
+
+        <p>Cybersecurity protects the systems that allow society to function...</p>
+
+        <p>The world must move forward with a strong commitment to both values...</p>
+
+        <p>Ultimately, cybersecurity and FOI together help create a society that is both safe and free...</p>
+    </div>
+
+    <!-- Sources -->
+    <div class="main">
+        <h3 class="hero-title">Sources</h3>
+        <p>
+            <a href="https://www.idx.us/knowledge-center/freedom-of-information-in-an-era-of-cyber-threats-your-right-to-know-vs-yo" target="_blank">IDX Knowledge Center – Cyber Security and the Freedom of Information Act</a><br><br>
+            <a href="https://www.ipc.on.ca/en/about-us/privacy-and-transparency-in-a-modern-government" target="_blank">IPC Ontario – Privacy and Transparency in a Modern Government</a><br><br>
+            <a href="https://www.ola.org/en/legislative-business/bills/parliament-43/session-1/bill-194" target="_blank">Legislative Assembly of Ontario – Bill 194</a><br><br>
+            <a href="https://www.verizon.com/business/resources/articles/s/lessons-from-the-robbinhood-ransomware-attack-on-baltimore/" target="_blank">Verizon Business – Lessons from the RobbinHood Ransomware Attack on Baltimore</a><br><br>
+            <a href="https://www.ajg.com/news-and-insights/cyber-municipalities/" target="_blank">Arthur J. Gallagher & Co. – Municipalities Under Ransomware Attack</a>
+        </p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('siteSidebar');
+        const overlay = document.getElementById('overlay');
+
+        function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('active'); }
+        function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); }
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+        });
+        overlay.addEventListener('click', closeSidebar);
+    </script>
+</body>
+</html>

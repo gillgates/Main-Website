@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #000;
+            --panel: rgba(17,17,17,0.98);
+            --text-red: #8B0000;
+            --muted: #bdbdbd;
+            --sidebar-width: 280px;
+            --ease: 0.32s;
+        }
+
+        /* Reset + Base */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            height: 100%;
+            background: var(--bg);
+            font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+            color: var(--muted);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Menu Button */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+
+        /* Sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            z-index: 1050;
+        }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100%;
+            background: var(--panel);
+            padding-top: 64px;
+            overflow-y: auto;
+            transform: translateX(-110%);
+            transition: transform var(--ease);
+            z-index: 1101;
+        }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar nav {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 8px 12px;
+            }
+
+            .sidebar a, .dropdown-btn {
+                display: block;
+                padding: 14px 16px;
+                border-radius: 6px;
+                font-size: 18px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                text-align: left;
+                color: var(--muted);
+            }
+
+                .sidebar a.active,
+                .sidebar a:hover,
+                .dropdown-btn:hover {
+                    background: #222;
+                    color: #fff;
+                }
+
+        /* Dropdown */
+        .dropdown-container {
+            display: none;
+            flex-direction: column;
+            padding-left: 14px;
+        }
+
+            .dropdown-container.open {
+                display: block;
+            }
+
+        .dropdown-btn.active {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Hero */
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(36px, 6vw, 80px);
+            text-transform: uppercase;
+            color: var(--text-red);
+            text-align: center;
+            margin-top: 120px;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 24px 64px;
+            max-width: 900px;
+            margin: 0 auto 64px;
+        }
+
+            .main p {
+                font-size: 18px;
+                line-height: 1.6;
+                margin-bottom: 16px;
+            }
+
+        .image-right {
+            float: right;
+            width: 40%;
+            max-width: 300px;
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+
+            .image-right img {
+                width: 100%;
+                border-radius: 8px;
+            }
+
+        h3.hero-title {
+            margin-top: 64px;
+            font-size: clamp(28px, 5vw, 60px);
+            color: var(--text-red);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Menu Button -->
+    <button class="menu-btn" id="menuToggle">☰ Menu</button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="siteSidebar">
+        <nav>
+            <a href="Main.htm">Main</a>
+            <a href="Unit1.htm">Brick Breaker</a>
+            <a href="Unit2.htm">Historical Topics</a>
+
+            <button class="dropdown-btn active">Current Issues ▼</button>
+            <div class="dropdown-container open">
+                <a href="CyberFOI.htm">Cybersecurity / FOI</a>
+                <a href="CompEng.htm" class="active">Computer Engineer</a>
+            </div>
+
+            <a href="Unit5.htm">???</a>
+            <a href="Art.htm">Art Projects</a>
+        </nav>
+    </aside>
+
+    <!-- Page Title -->
+    <h1 class="hero-title">Computer Engineering</h1>
+
+    <!-- Main Content -->
+    <div class="main">
+        <div class="image-right">
+            <img src="https://www.mtu.edu/ece/undergraduate/computer/what-is/images/computer-banner2400.jpg" alt="Computer Engineering">
+        </div>
+
+        <p>Computer engineering is one of the most rapidly developing and influential areas...</p>
+        <p>Computer engineering combines two major disciplines: computer science and electrical engineering...</p>
+        <p>Hardware development is a major part of the profession...</p>
+        <p>Many computer engineers also specialize in software development...</p>
+        <p>Artificial intelligence and robotics represent some of the fastest-growing opportunities...</p>
+        <p>Networking is another major specialization...</p>
+        <p>Succeeding in computer engineering requires a strong skill set in mathematics, problem solving, and logical reasoning...</p>
+        <p>Computer engineers work in a wide variety of environments depending on their specialization...</p>
+        <p>The future of computer engineering continues to expand with new innovations every year...</p>
+        <p>Ultimately, computer engineering is more than just building machines—it is about improving human life...</p>
+        <p>Anyone interested in computer engineering should enjoy exploring how things work, building or repairing devices, and solving technical challenges...</p>
+        <p>Computer engineers are essential to the world we live in today and will continue to be at the forefront of progress for decades to come...</p>
+    </div>
+
+    <!-- Sources -->
+    <div class="main">
+        <h3 class="hero-title">Sources</h3>
+        <p>
+            <a href="https://www.bls.gov/oes/current/oes172061.htm" target="_blank">U.S. Bureau of Labor Statistics – Computer Hardware Engineers</a><br><br>
+            <a href="https://www.computerscience.org/careers/computer-engineering" target="_blank">Computer Engineer Career Overview – ComputerScience.org</a><br><br>
+            <a href="https://www.mtu.edu/ece/undergraduate/computer/what-is" target="_blank">What is Computer Engineering? – Michigan Tech University</a><br><br>
+            <a href="https://www.computer.org/communities/student-activities/career" target="_blank">Career Disciplines in Computer Engineering – IEEE</a><br><br>
+            <a href="https://www.nspe.org/career-growth" target="_blank">Engineering Careers – NSPE</a>
+        </p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('siteSidebar');
+        const overlay = document.getElementById('overlay');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        });
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+        });
+    </script>
+
+</body>
+</html>
